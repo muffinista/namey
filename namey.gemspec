@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
   s.name        = "namey"
   s.version     = Namey::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.authors     = ["Colin Mitchell"]
+  s.email       = ["colin@muffinlabs.com"]
+  s.homepage    = "http://muffinlabs.com/"
+  s.summary     = %q{Simple name generator based on US Census Data}
+  s.description = %q{Simple name generator, which can generate male/female names based on US Census Data}
 
   s.rubyforge_project = "namey"
 
@@ -18,4 +18,22 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+
+  if s.respond_to? :specification_version then
+    s.specification_version = 3
+
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<sqlite3-ruby>, [">= 0"])
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
+    else
+      s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
+      s.add_dependency(%q<shoulda>, [">= 0"])
+    end
+  else
+    s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
+    s.add_dependency(%q<shoulda>, [">= 0"])
+  end
 end
+
+
+# http://www.census.gov/genealogy/names/
