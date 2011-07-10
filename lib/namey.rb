@@ -1,0 +1,3 @@
+module Namey
+  # Your code goes here...
+end
