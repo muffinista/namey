@@ -5,6 +5,11 @@ module Namey
       @db = SQLite3::Database.open dbname
     end
 
+    def name(frequency = :common, surname = true)
+      method = rand > 0.5 ? :male : :female
+      send(method, frequency, surname)
+    end
+    
     def male(frequency = :common, surname = true)
       generate(:type => :male, :frequency => frequency, :with_surname => surname)
     end
@@ -24,11 +29,9 @@ module Namey
         :with_surname => true
       }.merge(params)
 
-
       if ! ( params[:min_freq] || params[:max_freq] )
         params[:min_freq], params[:max_freq] = frequency_values(params[:frequency])
       end
-      puts params.inspect
       
       name = get_name(params[:type], params[:min_freq], params[:max_freq])
       if params[:type] != :surname && params[:with_surname] == true

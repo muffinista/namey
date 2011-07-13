@@ -4,4 +4,4 @@ $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 require 'namey'
 
 @generator = Namey::Generator.new
-puts @generator.female
+puts @generator.name
