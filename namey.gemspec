@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Colin Mitchell"]
   s.email       = ["colin@muffinlabs.com"]
-  s.homepage    = "http://muffinlabs.com/"
+  s.homepage    = "https://github.com/muffinista/namey"
   s.summary     = %q{Simple name generator based on US Census Data}
   s.description = %q{Simple name generator, which can generate male/female names based on US Census Data}
 
@@ -23,14 +23,14 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<sqlite3-ruby>, [">= 0"])
+      s.add_runtime_dependency(%q<sqlite3>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
     else
-      s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
+      s.add_dependency(%q<sqlite3>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
     end
   else
-    s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
+    s.add_dependency(%q<sqlite3>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
   end
 end
