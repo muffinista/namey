@@ -1,4 +1,4 @@
-require 'sqlite3'
+#require 'sqlite3'
 
 module Namey
   def self.db_path
@@ -8,9 +8,7 @@ module Namey
     @@db_path = x
   end
   
-
-  # Your code goes here...
-  @@db_path = File.join(File.dirname(__FILE__), "..", "data", "names.db")
+  @@db_path = "sqlite://#{File.join(File.dirname(__FILE__), "..", "data", "names.db")}"
 
   require 'namey/generator'
 end

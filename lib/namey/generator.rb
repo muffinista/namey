@@ -1,8 +1,10 @@
+require 'sequel'
+
 module Namey
   class Generator
 
     def initialize(dbname = Namey.db_path)     
-      @db = SQLite3::Database.open dbname
+      @db = Sequel.connect(dbname)
     end
 
     def name(frequency = :common, surname = true)
@@ -60,12 +62,17 @@ module Namey
     end
     
     protected
-    def get_name(src, min_freq = 0, max_freq = 100)
-      @db.get_first_row("SELECT name FROM #{src.to_s} WHERE freq > ? AND freq < ? ORDER BY RANDOM() LIMIT 1;",
-                         min_freq, max_freq).first
+
+    def random_sort(set)
+      if @db.class == Sequel::SQLite::Database
+        set.order{RANDOM{}}
+      else
+        set.order{RAND{}}
+      end
     end
     
-
-    
+    def get_name(src, min_freq = 0, max_freq = 100)     
+      random_sort(@db[src.to_sym].filter{(freq > min_freq) & (freq < max_freq)}).first[:name]
+    end
   end
 end

@@ -24,6 +24,8 @@ module Namey
     def parse_file(src, dest)
       create_table(dest)
 
+      puts "***** #{dest} *****"
+      
       file = File.new(src, "r")
       while (line = file.gets)
         data = line.split
@@ -31,9 +33,11 @@ module Namey
         name = data.first.capitalize
         freq = data[2].to_f
 
-        if dest == "surname"
-          name = cleanup_surname(name)
-        end
+        name = if dest == "surname"
+                 cleanup_surname(name)
+               else
+                 cleanup_firstname(name)
+               end
         
         puts "#{name} #{freq}"
         @db.execute "insert into #{dest} (name, freq) values ( ?, ? )", name, freq
@@ -47,6 +51,10 @@ module Namey
       @db.execute "create table #{name} (name varchar(20), freq REAL);"
     end
 
+    def cleanup_firstname(name)
+      name.gsub(/^Dean(\w+)/) { |s| "DeAn#{$1}" }
+    end
+
     def cleanup_surname(name)
       if name.length > 4
         name.gsub!(/^Mc(\w+)/) { |s| "Mc#{$1.capitalize}" }
@@ -55,7 +63,7 @@ module Namey
         name.gsub!(/^Osh(\w+)/) { |s| "O'sh#{$1}" }
         name.gsub!(/^Van(\w+)/) { |s| "Van#{$1.capitalize}" }
         name.gsub!(/^Von(\w+)/) { |s| "Von#{$1.capitalize}" }        
-        name.gsub!(/^De(\w+)/) { |s| "De#{$1.capitalize}" }        
+#        name.gsub!(/^Dev(\w+)/) { |s| "DeV#{$1}" }        
       end
       name
     end
