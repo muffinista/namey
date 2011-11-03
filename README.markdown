@@ -21,7 +21,8 @@ Or, to get a particular frequency level, try one of these:
 
     @generator.name(:common)
      => "Michael Thomas" 
-    @generator.name(:rare)
+
+	@generator.name(:rare)
 	 => "Deangelo Jotblad" 
 
 	@generator.name(:all)
@@ -72,12 +73,18 @@ and `max_freq` to get a range of names:
 
 ## Data ##
 
-The data for namey is in a SQLite database, which is included with the
-gem.  If you want to fiddle around, you can check out Namey::Importer,
-or the `namey-load-data` script included with the gem, which will
-generate the database from the original source files.
+Namey comes with a pre-loaded SQLite database. However, you can
+specify a different datasource when initializing the gem:
 
-@todo -- options for other db engines
+    @generator = Namey::Generator.new("mysql://username:passwrd@host/database")
+
+Namey uses Sequel to access data, and is tested with both MySQL and
+SQLite. It might need some tweaking to work with other engines.
+
+If you want to fiddle around with the data, you can check out
+Namey::Importer, or the `namey-load-data` script included with the
+gem, which will generate the database from the original source files.
+
 
 ## Capitalization ##
 
