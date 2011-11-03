@@ -4,7 +4,13 @@ $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 require 'namey'
 require 'namey/parser'
 
-@parser = Namey::Parser.new("names2.db")
+dest = ARGV.shift
+if dest.nil?
+  dest ="sqlite://data/names.db"
+end
+puts "Load data to #{dest}"
+
+@parser = Namey::Parser.new(dest)
 @parser.load_male_names("data/dist.male.first")
 @parser.load_female_names("data/dist.female.first")
 @parser.load_surnames("data/dist.all.last")

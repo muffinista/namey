@@ -3,5 +3,7 @@ $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'namey'
 
-@generator = Namey::Generator.new
+uri = ARGV.shift
+
+@generator = Namey::Generator.new uri
 puts @generator.name

@@ -93,7 +93,7 @@ module Namey
     def create_table(name)   
       if ! db.tables.include?(name)
         db.create_table name do
-          String :name
+          String :name, :size => 15
           Float :freq
           index :freq
         end

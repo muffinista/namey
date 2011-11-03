@@ -10,7 +10,8 @@ module Namey
     #
     # initialize the name generator
     # * +dbname+ - Sequel style db URI ex: 'sqlite://foo.db'
-    def initialize(dbname = Namey.db_path)     
+    def initialize(dbname = nil)
+      dbname = Namey.db_path if dbname.nil?
       @db = Sequel.connect(dbname)
     end
 
@@ -104,7 +105,10 @@ module Namey
     # randomly sort a result set according to the data adapter class
     #
     def random_sort(set)
-      if @db.class == Sequel::SQLite::Database
+
+      # this is a bit of a hack obviously, but it checks the sort of data engine being used
+      # to figure out how to randomly sort
+      if @db.class.name == "Sequel::SQLite::Database"
         set.order{RANDOM{}}
       else
         set.order{RAND{}}
