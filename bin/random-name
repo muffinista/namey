@@ -7,3 +7,4 @@ uri = ARGV.shift
 
 @generator = Namey::Generator.new uri
 puts @generator.name
+
