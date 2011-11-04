@@ -1,0 +1,54 @@
+require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+
+describe "Namey::Generator" do
+  before(:each) do
+    @uri = "sqlite:/"
+    @gen = Namey::Generator.new(@uri)
+  end
+
+  describe "name" do
+    it "should pass params to generate" do
+      @gen.should_receive(:generate).with(:frequency => :common, :with_surname => true)
+      @gen.name
+    end
+  end
+
+  describe "male" do
+    it "should pass params to generate" do
+      @gen.should_receive(:generate).with(:type => :male, :frequency => :common, :with_surname => true)
+      @gen.male
+    end
+  end
+
+  describe "female" do
+    it "should pass params to generate" do
+      @gen.should_receive(:generate).with(:type => :female, :frequency => :common, :with_surname => true)
+      @gen.female
+    end
+  end
+
+  describe "surname" do
+    it "should pass params to generate" do
+      @gen.should_receive(:generate).with(:type => :surname, :frequency => :common)
+      @gen.surname
+    end
+  end
+
+  describe "generate" do
+    it "should pass to get_name once for surnames" do
+      @gen.should_receive(:get_name).with(:surname, 0, 20).and_return("Chuck")
+      @gen.generate(:type => :surname).should == "Chuck"
+    end
+
+    it "should pass to get_name once when with_surname is false" do
+      @gen.should_receive(:get_name).with(:male, 0, 20).and_return("Chuck")
+      @gen.generate(:type => :male, :with_surname => false).should == "Chuck"
+    end
+
+    it "should pass to get_name twice for full names" do
+      @gen.should_receive(:get_name).with(:male, 0, 20).and_return("Chuck")      
+      @gen.should_receive(:get_name).with(:surname, 0, 20).and_return("Smith")
+      @gen.generate(:type => :male).should == "Chuck Smith"
+    end
+  end
+end

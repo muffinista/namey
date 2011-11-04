@@ -17,15 +17,16 @@ module Namey
 
     #
     # generate a name
+    #
     # * +frequency+ - :common, :rare, :all
     # * +surname+ - true if you want a full name, false if you just want a first name
     def name(frequency = :common, surname = true)
-      method = rand > 0.5 ? :male : :female
-      send(method, frequency, surname)
+      generate(:frequency => frequency, :with_surname =>surname)
     end
     
     #
     # generate a male name
+    #
     # * +frequency+ - :common, :rare, :all
     # * +surname+ - true if you want a full name, false if you just want a first name
     def male(frequency = :common, surname = true)
@@ -34,6 +35,7 @@ module Namey
 
     #
     # generate a female name
+    #
     # * +frequency+ - :common, :rare, :all
     # * +surname+ - true if you want a full name, false if you just want a first name
     def female(frequency = :common, surname = true)
@@ -42,15 +44,17 @@ module Namey
 
     #
     # generate a surname
+    #
     # * +frequency+ - :common, :rare, :all
     def surname(frequency = :common)
       generate(:type => :surname, :frequency => frequency)
     end
-
+    
     #
     # generate a name using the supplied parameter hash
     #
     # * +params+ - A hash of parameters
+    #
     # ==== Params
     # * +:type+ - :male, :female, :surname
     # * +:frequency+ -  :common, :rare, :all
@@ -58,16 +62,19 @@ module Namey
     # * +:max_freq+ - raw frequency values to specify a precise range
     def generate(params = {})
       params = {
-        :type => :female,
+        :type => random_gender,
         :frequency => :common,
         :with_surname => true
       }.merge(params)
 
+      
       if ! ( params[:min_freq] || params[:max_freq] )
         params[:min_freq], params[:max_freq] = frequency_values(params[:frequency])
       end
       
       name = get_name(params[:type], params[:min_freq], params[:max_freq])
+
+      # add surname if needed
       if params[:type] != :surname && params[:with_surname] == true
         name = "#{name} #{get_name(:surname, params[:min_freq], params[:max_freq])}"
       end
@@ -101,6 +108,14 @@ module Namey
     end
     
 
+
+    #
+    # pick a gender at random
+    #
+    def random_gender
+      rand > 0.5 ? :male : :female
+    end
+    
     #
     # randomly sort a result set according to the data adapter class
     #
