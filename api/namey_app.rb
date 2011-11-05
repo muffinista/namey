@@ -25,6 +25,12 @@ get '/name.?:format?' do
     :frequency => :common
   }.merge(params.symbolize_keys!)
 
+  opts[:with_surname] = true if params[:with_surname] == "true"
+
+  [:type, :frequency].each do |key|
+    opts[key] = opts[key].to_sym if opts.has_key?(key)
+  end
+  
   count = (params.delete(:count) || 1).to_i
   count = 10 if count > 10
   
