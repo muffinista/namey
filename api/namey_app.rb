@@ -12,13 +12,12 @@ class Hash
 end
 
 before do
-  enable :inline_templates
   @generator = Namey::Generator.new("mysql://root@localhost/namey")
 end
   
 get '/' do
   # use index.haml for readme
-  markdown :index #, :layout => :index
+  erb :index #, :layout => :index
 end
   
 get '/name.?:format?' do
@@ -40,12 +39,3 @@ get '/name.?:format?' do
     ["<ul>", names.collect { |n| "<li>#{n}</li>" }.join(" "), "</ul>"].join("")
   end
 end 
-
-__END__
-
-@@ index
-* Describe the API here
-* Form for getting names
-* etc
-  
-
