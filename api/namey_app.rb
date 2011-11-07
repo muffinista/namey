@@ -30,6 +30,9 @@ get '/name.?:format?' do
   [:type, :frequency].each do |key|
     opts[key] = opts[key].to_sym if opts.has_key?(key)
   end
+
+  opts.delete(:type) if ! [:male, :female, :surname].include?(opts[:type])
+  #opts[:type] = "both" if ! [:male, :female, :surname].include?(opts[:type])
   
   count = (params.delete(:count) || 1).to_i
   count = 10 if count > 10

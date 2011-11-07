@@ -2,11 +2,15 @@ $(document).ready(function() {
   $('#name-params').submit(function() {
 
 	var opts = {  
-	  type: $("input[name=type]:checked").val(),
       frequency:  $("input[name=frequency]:checked").val(),
       count:  $("select[name=count]").val(),
       with_surname:  $("input[name=with_surname]:checked").val()
 	};
+
+	var type =  $("input[name=type]:checked").val();
+	if ( type != "both" ) {
+	  opts.type = type;
+	}
 
 	$.ajax({
 	  type: 'GET',
