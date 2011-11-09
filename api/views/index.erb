@@ -22,46 +22,46 @@
     <link href="/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
-      padding-top: 60px;
+padding-top: 10px;
       }
+.hero-unit {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.hero-unit h1 {
+ font-size: 48px;
+}
+.hero-unit p {
+ font-size: 16px;
+ line-height: 18px;
+ font-weight: 100;
+}
+
     </style>
 
-    <!-- Le fav and touch icons -->
 	<!---
        <link rel="shortcut icon" href="images/favicon.ico">
-       <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-       <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-       <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 	   --->
   </head>
 
   <body>
-
-    <div class="topbar">
-      <div class="fill">
-        <div class="container">
-          <a class="brand" href="#">Namey</a>
-          <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
     <div class="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-        <p><a class="btn primary large">Learn more &raquo;</a></p>
+        <h1>Namey!</h1>
+		<h2>A random name generator</h1>
+		<p>Welcome to Namey, the random name generator, powered by the ruby
+		  gem of the same name. It uses the 
+		  <a href="http://www.census.gov/genealogy/names/">US Census
+			Bureau database</a> of first and last names to generate random
+		  names. You can specify gender, whether you want a common or
+			rare name, and so on. It's pretty easy, so...</p>
       </div>
 
 	  <section id="forms">
 		<div class="page-header">
-		  <h1>Forms</h1>
+		  <h1>Lets make some names!</h1>
 		</div>
 		<div class="row">
 		  <div>
@@ -182,25 +182,27 @@
 
       <!-- Example row of columns -->
       <div class="row">
+        <div class="span5">
+          <h2>Open Source</h2>
+          <p>The code for namey is totally open source, do what you
+          like with it! <a href="https://github.com/muffinista/namey">Check it out on github</a></p>
+		</div>
         <div class="span6">
-          <h2>Heading</h2>
-          <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>API Available</h2>
+          <p>Are you a nerd? Do you like APIs? You're in luck! Namey
+          has a <a href="/api.js">Javascript API</a> available so
+          you can generate names however you would like.</p>
         </div>
         <div class="span5">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-		</div>
-        <div class="span5">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>Muffinlabs</h2>
+          <p>Namey is
+          a <a href="http://muffinlabs.com">muffinlabs</a>
+          production. Please visit!</p>
         </div>
       </div>
 
       <footer>
-        <p>&copy; Company 2011</p>
+        <p>&copy; Colin Mitchell 2011, <a href="http://muffinlabs.com">http://muffinlabs.com</a></p>
       </footer>
 
     </div> <!-- /container -->
