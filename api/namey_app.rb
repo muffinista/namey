@@ -11,8 +11,8 @@ class Hash
   end
 end
 
-before do
-  @generator = Namey::Generator.new("mysql://root@localhost/namey")
+configure do
+  @generator = Namey::Generator.new
 end
   
 get '/' do
