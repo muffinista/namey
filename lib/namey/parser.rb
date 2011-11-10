@@ -1,4 +1,5 @@
 require 'sequel'
+require 'open-uri'
 
 module Namey
 
@@ -58,7 +59,8 @@ module Namey
       puts "***** Importing #{dest}"
 
       count = 0
-      names = File.foreach(src).collect do |line|
+#      names = File.foreach(src).collect do |line|
+      names = open(src).collect do |line|        
         count += 1
         if count % 2000 == 0
           puts count
@@ -90,8 +92,8 @@ module Namey
     #
     # create a name table
     #
-    def create_table(name)   
-      if ! db.tables.include?(name)
+    def create_table(name)
+      if ! db.tables.include?(name.to_sym)
         db.create_table name do
           String :name, :size => 15
           Float :freq

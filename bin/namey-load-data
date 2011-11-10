@@ -11,6 +11,11 @@ end
 puts "Load data to #{dest}"
 
 @parser = Namey::Parser.new(dest)
-@parser.load_male_names("data/dist.male.first")
-@parser.load_female_names("data/dist.female.first")
-@parser.load_surnames("data/dist.all.last")
+#@parser.load_male_names("data/dist.male.first")
+#@parser.load_female_names("data/dist.female.first")
+#@parser.load_surnames("data/dist.all.last")
+
+base_url = "http://www.census.gov/genealogy/names"
+@parser.load_male_names("#{base_url}/dist.male.first")
+@parser.load_female_names("#{base_url}/dist.female.first")
+@parser.load_surnames("#{base_url}/dist.all.last")
