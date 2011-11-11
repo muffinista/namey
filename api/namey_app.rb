@@ -11,7 +11,7 @@ class Hash
   end
 end
 
-configure do
+before do
   @generator = Namey::Generator.new
 end
   
