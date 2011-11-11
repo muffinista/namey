@@ -20,25 +20,7 @@
 
     <!-- Le styles -->
     <link href="/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-padding-top: 10px;
-      }
-.hero-unit {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.hero-unit h1 {
- font-size: 48px;
-}
-.hero-unit p {
- font-size: 16px;
- line-height: 18px;
- font-weight: 100;
-}
-
-    </style>
-
+    <link href="/namey.css" rel="stylesheet">
 	<!---
        <link rel="shortcut icon" href="images/favicon.ico">
 	   --->
@@ -49,23 +31,24 @@ padding-top: 10px;
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Namey!</h1>
-		<h2>A random name generator</h1>
-		<p>Welcome to Namey, the random name generator, powered by the ruby
-		  gem of the same name. It uses the 
+        <h1>Namey! <small>A random name generator</small></h1>
+		<p>Welcome to Namey, your friendly neighborhood random name
+		  generator. It uses the 
 		  <a href="http://www.census.gov/genealogy/names/">US Census
 			Bureau database</a> of first and last names to generate random
 		  names. You can specify gender, whether you want a common or
-			rare name, and so on. It's pretty easy, so...</p>
+		  rare name, and so on. It's pretty easy, so... Lets make
+		  some names!</p>
       </div>
 
 	  <section id="forms">
 		<div class="page-header">
-		  <h1>Lets make some names!</h1>
+		  <h1>Name Options <small>What sort of names do you want?</small></h1>
 		</div>
+
 		<div class="row">
-		  <div>
-			<form id="name-params">
+		  <div class="span8">
+			<form id="name-params" class="form-stacked">
 			  <fieldset>
 				<div class="clearfix">
 				  <label id="type-opts">Name Type</label>
@@ -99,7 +82,7 @@ padding-top: 10px;
 				  </div>
 				</div><!-- /clearfix -->
 
-				<div class="clearfix">
+				<div class="clearfix surname-wrapper">
 				  <div class="input">
 					<ul class="inputs-list">
 					  <li>
@@ -140,9 +123,12 @@ padding-top: 10px;
 					  <li>
 						<label>
 						  <input type="radio" name="frequency" value="custom" />
-						  <span>Custom range: </span>
-						  From: <input class="span2 disabled" id="min_freq" name="min_freq" type="text" placeholder="(0-100)" disabled />
-						  To: <input class="span2 disabled" id="max_freq" name="max_freq" type="text" placeholder="(0-100)" disabled />
+						  <span>Custom range </span>
+
+						  <span class="custom_range_wrapper">
+							- From: <input class="span2 disabled" id="min_freq" name="min_freq" type="text" placeholder="(0-100)" disabled />
+							To: <input class="span2 disabled" id="max_freq" name="max_freq" type="text" placeholder="(0-100)" disabled />
+						  </span>
 						</label>
 					  </li>
 					</ul>
@@ -164,42 +150,49 @@ padding-top: 10px;
 				</div><!-- /clearfix -->
 
 				<div class="clearfix">
-				  <label for="disabledInput">Results:</label>
-				  <div class="input">
-					<textarea class="xxlarge" name="nameList" id="nameList" rows="5"></textarea>
-				  </div>
-				</div><!-- /clearfix -->
-
-				<div class="actions">
-				  <input type="submit" class="btn primary" value="Gimme a name!">
+				  <input type="submit" class="btn primary" value="Let's go!">
+				  <span class="spinny"><img src="/ajax-loader.gif" /></span>
 				</div>
 			  </fieldset>
 			</form>
 		  </div>
-		</div><!-- /row -->
 
+		  <div class="span8" id="results">
+			<form id="name-results" class="form-stacked">
+			  <label for="nameList" class="biglabel">Results:</label>
+			  <fieldset>
+				<div class="clearfix">
+				  <div class="input">
+					<textarea class="large" name="nameList" id="nameList" rows="5"></textarea>
+				  </div>
+				</div><!-- /clearfix -->
+			  </fieldset>
+			</form>
+		  </div>
+		</div><!-- /row -->
 	  </section>
 
-      <!-- Example row of columns -->
+<section id="about">
       <div class="row">
         <div class="span5">
           <h2>Open Source</h2>
-          <p>The code for namey is totally open source, do what you
-          like with it! <a href="https://github.com/muffinista/namey">Check it out on github</a></p>
+          <p>Namey is powered by a ruby gem. The code is totally open source, do what you
+			like with it! <a href="https://github.com/muffinista/namey">Check it out on github</a></p>
 		</div>
         <div class="span6">
           <h2>API Available</h2>
           <p>Are you a nerd? Do you like APIs? You're in luck! Namey
-          has a <a href="/api.js">Javascript API</a> available so
-          you can generate names however you would like.</p>
+			has a <a href="/api.js">Javascript API</a> available so
+			you can generate names however you would like.</p>
         </div>
         <div class="span5">
           <h2>Muffinlabs</h2>
           <p>Namey is
-          a <a href="http://muffinlabs.com">muffinlabs</a>
-          production. Please visit!</p>
+			a <a href="http://muffinlabs.com">muffinlabs</a>
+			production. Please visit anytime!</p>
         </div>
       </div>
+</section>
 
       <footer>
         <p>&copy; Colin Mitchell 2011, <a href="http://muffinlabs.com">http://muffinlabs.com</a></p>

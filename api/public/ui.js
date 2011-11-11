@@ -1,16 +1,29 @@
 $(document).ready(function() {
   $("input[name=frequency]").change(function() {
-	console.log("HI!");
 	if ( $("input[name=frequency]:checked").val() == "custom" ) {
+	  $(".custom_range_wrapper").fadeIn();
 	  $("#min_freq,#max_freq").removeClass("disabled").removeAttr("disabled"); 
 	}
 	else {
+	  $(".custom_range_wrapper").fadeOut();
 	  $("#min_freq,#max_freq").addClass("disabled").attr("disabled", true); ;
 	}
-
   });
 
+  $("input[name=type]").change(function() {
+	if ( $("input[name=type]:checked").val() != "surname" ) {
+	  $(".surname-wrapper").fadeIn();
+	}
+	else {
+	  $(".surname-wrapper").fadeOut();
+	}
+  });
+
+
+
   $('#name-params').submit(function() {
+
+	$(".spinny").show();
 
 	var opts = {  
       count:  $("select[name=count]").val(),
@@ -33,8 +46,9 @@ $(document).ready(function() {
 	}
 
 	opts.callback = function(r) {
-		$("#nameList").val(r);
-	  }
+	  $(".spinny").hide();
+	  $("#nameList").val(r.join("\n"));
+	}
 	namey.get(opts);
 
 	return false;
