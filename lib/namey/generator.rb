@@ -70,7 +70,22 @@ module Namey
       
       if ! ( params[:min_freq] || params[:max_freq] )
         params[:min_freq], params[:max_freq] = frequency_values(params[:frequency])
+      else
+
+        #
+        # do some basic data validation in case someone is being a knucklehead
+        #
+        params[:min_freq] = params[:min_freq].to_i
+        params[:max_freq] = params[:max_freq].to_i
+
+        params[:max_freq] = params[:min_freq] + 1 if params[:max_freq] <= params[:min_freq]
+
+        # max_freq needs to be at least 4 to get any results back,
+        # because the most common male name only rates 3.3
+        # JAMES          3.318  3.318      1
+        params[:max_freq] = 4 if params[:max_freq] < 4
       end
+
       
       name = get_name(params[:type], params[:min_freq], params[:max_freq])
 
@@ -134,7 +149,8 @@ module Namey
     # query the db for a name
     #
     def get_name(src, min_freq = 0, max_freq = 100)     
-      random_sort(@db[src.to_sym].filter{(freq >= min_freq) & (freq <= max_freq)}).first[:name]
+      tmp = random_sort(@db[src.to_sym].filter{(freq >= min_freq) & (freq <= max_freq)})
+      tmp.count > 0 ? tmp.first[:name] : nil
     end
   end
 end
