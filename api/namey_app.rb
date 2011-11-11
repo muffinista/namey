@@ -39,11 +39,11 @@ get '/name.?:format?' do
   
   names = 1.upto(count).collect do
     @generator.generate(opts)
-  end
+  end.compact
   
   if params[:format] == "json"
     content_type :json, 'charset' => 'utf-8'
-    JSON.pretty_generate names
+    JSON.generate names
   else
     ["<ul>", names.collect { |n| "<li>#{n}</li>" }.join(" "), "</ul>"].join("")
   end

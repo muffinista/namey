@@ -20,7 +20,6 @@ $(document).ready(function() {
   });
 
 
-
   $('#name-params').submit(function() {
 
 	$(".spinny").show();

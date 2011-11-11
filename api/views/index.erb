@@ -3,9 +3,9 @@
   <!-- shamelessly stolen from view-source:http://twitter.github.com/bootstrap/examples/hero.html -->
   <head>
     <meta charset="utf-8">
-    <title>Namey</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>Namey - A random name generator</title>
+    <meta name="description" content="a simple tool for generating random names">
+    <meta name="author" content="Colin Mitchell">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -43,7 +43,7 @@
 
 	  <section id="forms">
 		<div class="page-header">
-		  <h1>Name Options <small>What sort of names do you want?</small></h1>
+		  <h1>Options <small>What sort of names do you want?</small></h1>
 		</div>
 
 		<div class="row">
@@ -126,8 +126,9 @@
 						  <span>Custom range </span>
 
 						  <span class="custom_range_wrapper">
-							- From: <input class="span2 disabled" id="min_freq" name="min_freq" type="text" placeholder="(0-100)" disabled />
-							To: <input class="span2 disabled" id="max_freq" name="max_freq" type="text" placeholder="(0-100)" disabled />
+							- From: <input class="span2 disabled" id="min_freq" name="min_freq" type="text" placeholder="(1-100)" disabled />
+							To: <input class="span2 disabled" id="max_freq" name="max_freq" type="text" placeholder="(1-100)" disabled /><br />
+							<small>(1 is super-common, 100 is super-rare)</small>
 						  </span>
 						</label>
 					  </li>
@@ -172,33 +173,31 @@
 		</div><!-- /row -->
 	  </section>
 
-<section id="about">
-      <div class="row">
-        <div class="span5">
-          <h2>Open Source</h2>
-          <p>Namey is powered by a ruby gem. The code is totally open source, do what you
-			like with it! <a href="https://github.com/muffinista/namey">Check it out on github</a></p>
+	  <section id="about">
+		<div class="row">
+          <div class="span5">
+			<h2>Open Source</h2>
+			<p>Namey is powered by a ruby gem. The code is totally open source, do what you
+			  like with it! <a href="https://github.com/muffinista/namey">Check it out on github</a></p>
+		  </div>
+          <div class="span6">
+			<h2>I have an API!</h2>
+			<p>Are you a nerd? Do you like APIs? You're in luck! Namey
+			  has a <a href="/api.js">Javascript API</a> available so
+			  you can generate names however you would like.</p>
+          </div>
+          <div class="span5">
+			<h2>Muffinlabs</h2>
+			<p>Namey is
+			  a <a href="http://muffinlabs.com">muffinlabs</a>
+			  production. Please visit anytime!</p>
+          </div>
 		</div>
-        <div class="span6">
-          <h2>API Available</h2>
-          <p>Are you a nerd? Do you like APIs? You're in luck! Namey
-			has a <a href="/api.js">Javascript API</a> available so
-			you can generate names however you would like.</p>
-        </div>
-        <div class="span5">
-          <h2>Muffinlabs</h2>
-          <p>Namey is
-			a <a href="http://muffinlabs.com">muffinlabs</a>
-			production. Please visit anytime!</p>
-        </div>
-      </div>
-</section>
+	  </section>
 
       <footer>
         <p>&copy; Colin Mitchell 2011, <a href="http://muffinlabs.com">http://muffinlabs.com</a></p>
       </footer>
-
     </div> <!-- /container -->
-
   </body>
 </html>
