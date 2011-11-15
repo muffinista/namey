@@ -6,6 +6,13 @@ describe "Namey::Generator" do
     @gen = Namey::Generator.new(@uri)
   end
 
+  describe "incoming sequel object" do
+    it "should work" do
+      @tmp = Sequel.connect(@uri)
+      @gen2 = Namey::Generator.new(@tmp)
+    end
+  end
+  
   describe "name" do
     it "should pass params to generate" do
       @gen.should_receive(:generate).with(:frequency => :common, :with_surname => true)

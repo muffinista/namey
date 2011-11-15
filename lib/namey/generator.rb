@@ -11,8 +11,12 @@ module Namey
     # initialize the name generator
     # * +dbname+ - Sequel style db URI ex: 'sqlite://foo.db'
     def initialize(dbname = nil)
-      dbname = Namey.db_path if dbname.nil?
-      @db = Sequel.connect(dbname)
+      if dbname.is_a? Sequel::Database
+        @db = dbname
+      else
+        dbname = Namey.db_path if dbname.nil?
+        @db = Sequel.connect(dbname)
+      end
     end
 
     #
