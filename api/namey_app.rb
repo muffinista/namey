@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/sequel'
 require 'namey'
 require 'json'
 
@@ -11,9 +12,11 @@ class Hash
   end
 end
 
-before do
-  @generator = Namey::Generator.new
-end
+
+# Establish the database connection; or, omit this and use the DATABASE_URL
+# environment variable as the connection string:
+set :database, 'mysql://username@hostname/database'
+
   
 get '/' do
   # use index.haml for readme
@@ -21,6 +24,8 @@ get '/' do
 end
   
 get '/name.?:format?' do
+  @generator = Namey::Generator.new(@database)
+
   opts = {
     :frequency => :common
   }.merge(params.symbolize_keys!)

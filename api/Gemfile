@@ -2,9 +2,9 @@ source :rubygems
 source 'http://gemcutter.org'
 
 gem "sinatra"
+gem "sinatra-sequel"
 gem "mysql"
 gem "sequel"
-gem "redcarpet"
 gem "json"
 
-gem "namey", :path => "/home/colin/Projects/namey"
+gem "namey"
