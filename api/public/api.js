@@ -1,7 +1,13 @@
 /** namey */
 namey = {
-  // jx -- http://www.openjs.com/scripts/jx/ -- V3.00.A
-  jx:{getHTTPObject:function(){var A=false;if(typeof ActiveXObject!="undefined"){try{A=new ActiveXObject("Msxml2.XMLHTTP")}catch(C){try{A=new ActiveXObject("Microsoft.XMLHTTP")}catch(B){A=false}}}else{if(window.XMLHttpRequest){try{A=new XMLHttpRequest()}catch(C){A=false}}}return A},load:function(url,callback,format){var http=this.init();if(!http||!url){return }if(http.overrideMimeType){http.overrideMimeType("text/xml")}if(!format){var format="text"}format=format.toLowerCase();var now="uid="+new Date().getTime();url+=(url.indexOf("?")+1)?"&":"?";url+=now;http.open("GET",url,true);http.onreadystatechange=function(){if(http.readyState==4){if(http.status==200){var result="";if(http.responseText){result=http.responseText}if(format.charAt(0)=="j"){result=result.replace(/[\n\r]/g,"");result=eval("("+result+")")}if(callback){callback(result)}}else{if(error){error(http.status)}}}};http.send(null)},init:function(){return this.getHTTPObject()}},
+
+  /*
+   * Lightweight JSONP fetcher
+   * Copyright 2010 Erik Karlsson. All rights reserved.
+   * BSD licensed
+   */
+  // Lightweight JSONP fetcher - www.nonobtrusive.com
+  jsonP:(function(){var a=0,c,f,b,d=this;function e(j){var i=document.createElement("script"),h=false;i.src=j;i.async=true;i.onload=i.onreadystatechange=function(){if(!h&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){h=true;i.onload=i.onreadystatechange=null;if(i&&i.parentNode){i.parentNode.removeChild(i)}}};if(!c){c=document.getElementsByTagName("head")[0]}c.appendChild(i)}function g(h,j,k){f="?";j=j||{};for(b in j){if(j.hasOwnProperty(b)){f+=encodeURIComponent(b)+"="+encodeURIComponent(j[b])+"&"}}var i="json"+(++a);d[i]=function(l){k(l);try{delete d[i]}catch(m){}d[i]=null;};e(h+f+"callback="+i);return i}return{get:g}}()),
 
   /**
    * API for namey random name generator.  There's two basic ways to use it.  First, just call namey.get with a callback:
@@ -66,10 +72,12 @@ namey = {
 	  }
 	}
 
-	this.jx.load('/name.json?' + tmp_params.join("&"), function(d) {
-	  var tmp = eval('(' + d + ')');
+	this.jsonP.get('//namey.muffinlabs.com/name.json', tmp_params, function(d) {
 	  if ( typeof(callback) == "function" ) {
-		callback(tmp);
+		callback(d);
+	  }
+	  else {
+		console.log(d);
 	  }
 	});
   }
