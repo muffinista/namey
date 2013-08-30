@@ -10,7 +10,6 @@ Bundler.require
 #require 'chatterbot'
 
 require 'tempfile'
-require 'sqlite3'
 
 
 # Requires supporting files with custom matchers and macros, etc,
