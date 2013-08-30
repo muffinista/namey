@@ -1,6 +1,6 @@
 module Namey
   def self.db_path
-    @@db_path ||= "sqlite://#{File.join(self.libdir, "..", "data", "names.db")}"  
+    @@db_path ||= "#{'jdbc:' if RUBY_PLATFORM == 'java'}sqlite://" + File.join(self.libdir, "..", "data", "names.db")
   end
   def self.db_path=(x)
     @@db_path = x

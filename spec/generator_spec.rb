@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Namey::Generator" do
   before(:each) do
-    @uri = "sqlite:/"
+    @uri = "#{'jdbc:' if RUBY_PLATFORM == 'java'}sqlite:/"
     @gen = Namey::Generator.new(@uri)
   end
 
