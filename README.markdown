@@ -7,6 +7,8 @@ names. Since the database itself specifies the frequency of each name,
 you can get specify whether you want a common name, rare name, etc.
 
 
+[![Build Status](https://travis-ci.org/muffinista/namey.png?branch=master)](https://travis-ci.org/muffinista/namey)
+
 ## Usage ##
 
 Using namey is pretty straightforward. 
