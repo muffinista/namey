@@ -26,26 +26,15 @@ Gem::Specification.new do |s|
     sqlite = "sqlite3"
   end
 
-  if s.respond_to? :specification_version then
-    s.specification_version = 3
+  #s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<sequel>, [">= 0"])
-      s.add_runtime_dependency(sqlite, [">= 0"])
-      s.add_development_dependency(%q<shoulda>, [">= 0"])
-      s.add_development_dependency(%q<yard>, [">= 0"])      
-    else
-      s.add_dependency(%q<sequel>, [">= 0"])
-      s.add_dependency(sqlite, [">= 0"])
-      s.add_dependency(%q<shoulda>, [">= 0"])
-      s.add_dependency(%q<yard>, [">= 0"])
-    end
-  else
-    s.add_dependency(%q<sequel>, [">= 0"])
-    s.add_dependency(sqlite, [">= 0"])
-    s.add_dependency(%q<shoulda>, [">= 0"])
-    s.add_dependency(%q<yard>, [">= 0"])
-  end
+  s.add_development_dependency(%q<rake>, [">= 0"])
+  s.add_development_dependency(%q<rspec>, [">= 2.12.0"])
+    
+  s.add_runtime_dependency(%q<sequel>, [">= 0"])
+  s.add_runtime_dependency(sqlite, [">= 0"])
+  s.add_development_dependency(%q<shoulda>, [">= 0"])
+  s.add_development_dependency(%q<yard>, [">= 0"])      
 end
 
 
