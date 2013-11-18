@@ -6,8 +6,6 @@ gemspec
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do
-  gem 'simplecov', :require => false, :group => :test
-
   gem "shoulda", ">= 0"
   gem "rspec"
 
@@ -18,6 +16,7 @@ end
 # couple extra gems for testing db connectivity
 #
 group :test do
+  gem 'simplecov', :require => false
   gem "sequel"
   gem "sqlite3", :platform => :ruby
   gem "jdbc-sqlite3", :platform => :jruby

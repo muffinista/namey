@@ -15,7 +15,7 @@ puts "Load data to #{dest}"
 #@parser.load_female_names("data/dist.female.first")
 #@parser.load_surnames("data/dist.all.last")
 
-base_url = "http://www.census.gov/genealogy/names"
+base_url = "http://www.census.gov/genealogy/www/data/1990surnames"
 @parser.load_male_names("#{base_url}/dist.male.first")
 @parser.load_female_names("#{base_url}/dist.female.first")
 @parser.load_surnames("#{base_url}/dist.all.last")

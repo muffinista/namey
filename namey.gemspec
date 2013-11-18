@@ -26,6 +26,10 @@ Gem::Specification.new do |s|
     sqlite = "sqlite3"
   end
 
+  if RUBY_VERSION < "1.9"
+    spec.add_dependency "activesupport", "~> 3.0.11"
+  end
+  
   #s.specification_version = 3
 
   s.add_development_dependency(%q<rake>, [">= 0"])
