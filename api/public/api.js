@@ -44,6 +44,7 @@ namey = {
     get : function(options) {
 	      var callback;
 	      var tmp_params = [];
+        var host;
 
 	      if ( typeof(options) == "function" ) {
 	          callback = options;
@@ -74,9 +75,14 @@ namey = {
 	          else if ( typeof(options.frequency) != "undefined" ) {
 		            tmp_params.push("frequency=" + options.frequency);
 	          }
-	      }
 
-	      this.jsonP.get('//' + options.host + '/name.json', tmp_params, function(d) {
+
+	      }
+        else {
+            host = "namey.muffinlabs.com";
+        }
+
+	      this.jsonP.get('//' + host + '/name.json', tmp_params, function(d) {
 	          if ( typeof(callback) == "function" ) {
 		            callback(d);
 	          }
