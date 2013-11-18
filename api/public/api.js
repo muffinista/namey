@@ -43,7 +43,7 @@ namey = {
      */
     get : function(options) {
 	      var callback;
-	      var tmp_params = [];
+	      var tmp_params = {};
         var host = "namey.muffinlabs.com";
 
 	      if ( typeof(options) == "function" ) {
@@ -59,23 +59,22 @@ namey = {
 	          if ( typeof(options.count) == "undefined" ) {
 		            options.count = 1;
 	          }
-	          tmp_params.push("count=" + options.count);
+	          tmp_params.count = options.count;
 
 	          if ( typeof(options.type) != "undefined" && options.type != "both" ) {
-		            tmp_params.push("type=" + options.type);
+		            tmp_params.type = options.type;
 	          };
 
 	          if ( options.type != "surname" && typeof(options.with_surname) != "undefined" ) {
-		            tmp_params.push("with_surname=" + options.with_surname);
+		            tmp_params.with_surname = options.with_surname;
 	          }
 	          if ( options.min_freq ) {
-		            tmp_params.push("min_freq=" + options.min_freq);
-		            tmp_params.push("max_freq=" + options.max_freq);
+		            tmp_params.min_freq = options.min_freq;
+		            tmp_params.max_freq = options.max_freq;
 	          }
 	          else if ( typeof(options.frequency) != "undefined" ) {
-		            tmp_params.push("frequency=" + options.frequency);
+		            tmp_params.frequency = options.frequency;
 	          }
-
 
 	      }
 

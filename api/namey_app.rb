@@ -41,7 +41,11 @@ get '/name.?:format?' do
     :frequency => :common
   }.merge(params.symbolize_keys!)
 
-  opts[:with_surname] = true if params[:with_surname] == "true"
+  if params[:with_surname] == "true"
+    opts[:with_surname] = true
+  else
+    opts[:with_surname] = false
+  end
 
   [:type, :frequency].each do |key|
     opts[key] = opts[key].to_sym if opts.has_key?(key)
