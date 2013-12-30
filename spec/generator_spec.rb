@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Namey::Generator" do
   before(:each) do
-    @uri = "#{'jdbc:' if RUBY_PLATFORM == 'java'}sqlite:/"
+    @uri = "#{'jdbc:' if RUBY_PLATFORM == 'java'}#{Namey.db_path}"
     @gen = Namey::Generator.new(@uri)
   end
 
@@ -57,5 +57,15 @@ describe "Namey::Generator" do
       @gen.should_receive(:get_name).with(:surname, 0, 20).and_return("Smith")
       @gen.generate(:type => :male).should == "Chuck Smith"
     end
+
+    it "should work" do
+      @gen.generate.should_not be_nil
+    end
+
+    it "should work even for bad frequencies" do
+      @gen.generate(:frequency => :foo).should_not be_nil
+      @gen.generate(:min_freq => 50, :max_freq => 2).should_not be_nil
+    end
   end
+
 end
