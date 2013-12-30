@@ -142,6 +142,7 @@ module Namey
 
       # this is a bit of a hack obviously, but it checks the sort of data engine being used
       # to figure out how to randomly sort
+      puts "*** #{@db.class.name}"
       if @db.class.name == "Sequel::SQLite::Database"
         set.order{RANDOM{}}
       else
