@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   end
 
   if RUBY_VERSION < "1.9"
-    spec.add_dependency "activesupport", "~> 3.0.11"
+    s.add_dependency "activesupport", "~> 3.0.11"
   end
   
   #s.specification_version = 3
