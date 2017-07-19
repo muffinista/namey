@@ -33,11 +33,10 @@ Gem::Specification.new do |s|
   #s.specification_version = 3
 
   s.add_development_dependency(%q<rake>, [">= 0"])
-  s.add_development_dependency(%q<rspec>, [">= 2.12.0"])
+  s.add_development_dependency(%q<rspec>, [">= 3"])
     
   s.add_runtime_dependency(%q<sequel>, [">= 0"])
   s.add_runtime_dependency(sqlite, [">= 0"])
-  s.add_development_dependency(%q<shoulda>, [">= 0"])
   s.add_development_dependency(%q<yard>, [">= 0"])      
 end
 
