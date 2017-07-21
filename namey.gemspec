@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["colin@muffinlabs.com"]
   s.homepage    = "https://github.com/muffinista/namey"
   s.summary     = %q{Simple name generator based on US Census Data}
-  s.description = %q{Simple name generator, which can generate male/female names based on US Census Data}
+  s.description = %q{Simple name generator, which can generate names based on US Census Data}
 
   s.rubyforge_project = "namey"
 
@@ -30,15 +30,10 @@ Gem::Specification.new do |s|
     s.add_dependency "activesupport", "~> 3.0.11"
   end
   
-  #s.specification_version = 3
-
   s.add_development_dependency(%q<rake>, [">= 0"])
   s.add_development_dependency(%q<rspec>, [">= 3"])
     
-  s.add_runtime_dependency(%q<sequel>, [">= 0"])
+  s.add_runtime_dependency(%q<sequel>, ["~> 4.48"])
   s.add_runtime_dependency(sqlite, [">= 0"])
   s.add_development_dependency(%q<yard>, [">= 0"])      
 end
-
-
-# http://www.census.gov/genealogy/names/
