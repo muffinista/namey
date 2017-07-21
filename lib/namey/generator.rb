@@ -140,12 +140,14 @@ module Namey
     #
     def random_sort(set)
 
-      # this is a bit of a hack obviously, but it checks the sort of data engine being used
-      # to figure out how to randomly sort
-      if @db.class.name !~ /mysql/i
-        set.order{RANDOM{}}
-      else
-        set.order{RAND{}}
+      set.order do
+        # this is a bit of a hack obviously, but it checks the sort of
+        # data engine being used to figure out how to randomly sort
+        if @db.class.name !~ /mysql/i
+          random.function
+        else
+          rand.function
+        end
       end
     end
 
