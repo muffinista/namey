@@ -2,7 +2,10 @@ language: ruby
 rvm:
   - 1.9.3
   - 2.0.0
+  - 2.3.0
+  - 2.4.1
   - jruby-head
   - jruby-19mode
-# uncomment this line if your project needs to run something other than `rake`:
-# script: bundle exec rspec spec
+before_install:  # For jruby-head to work.
+  - gem install bundler
+  - gem update bundler
