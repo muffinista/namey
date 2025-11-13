@@ -2,12 +2,9 @@ Namey
 =====
 
 Namey is a ruby gem for auto-generating names.  It uses the [US Census
-Bureau database](http://www.census.gov/genealogy/names/) of first and last names to generate random
+Bureau database]([http://www.census.gov/genealogy/names/](https://www.census.gov/topics/population/genealogy.html)) of first and last names to generate random
 names. Since the database itself specifies the frequency of each name,
 you can get specify whether you want a common name, rare name, etc.
-
-
-[![Build Status](https://travis-ci.org/muffinista/namey.png?branch=master)](https://travis-ci.org/muffinista/namey)
 
 ## Usage ##
 
@@ -104,4 +101,12 @@ them are challenging.  The data is also stripped of apostrophes, so
 O'Brien is actually OBRIEN. The namey parser attempts to correct some
 of this, but it probably misses some.  If you find any glaring
 examples, just let me know.
+
+## Sources ##
+
+NOTE: The data in this gem is actually a little stale, but when it's updated, it'll probably be from these sources:
+
+https://www.census.gov/topics/population/genealogy.html
+https://www.ssa.gov/OACT/babynames/limits.html
+
 
